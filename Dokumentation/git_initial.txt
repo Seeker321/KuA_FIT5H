@@ -1,0 +1,31 @@
+Funktion:
+-git ist eine Versionverwaltung. Ermöglicht auf frühere Versionsstände einer Datei zuzugreifen
+-git wird in der Softwareentwicklung immer verwendet
+-git ermöglicht das Arbeiten mehrerer Personen an einem Projekt
+
+Kostenfreie Git Server:
+	github.com
+		-Eigene Projekte können hier abgelegt werden
+		-Projekte anderer Personen stehen zur Ansicht zur Verfügung
+
+Erstellen eines lokalen Repositorys
+1. ordner erstellen
+	mkdir "Ordner"
+2. Ordner mit git initalisieren
+	git init
+3.Datei erzeugen zum Testen
+	touch test.txt
+4.Datei zum Repository hinzufügen
+	git add . -A
+5.Datei commiten
+	git commit -am "first commit"
+6.Das lokale repos mit dem Remote Repos verbinden
+	git remote add origin https://github.com/"Name"/"Ordner".git
+7. Die lokalen Aenderungen zum Remote Repos hochladen
+	git push -u origin master
+
+Aktualisieren eines Projektes
+1. mit cd in das Basisverzeichnis einen Projektes gehen
+2. git add . -A
+3. git commit -am "Text zur Charakterisierung"
+4. git push origin master
