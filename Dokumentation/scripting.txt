@@ -1,0 +1,110 @@
+Voraussetzungen
+	SheBang-Zeile:
+	Die erste Zeile enthält den Pfad zum interpretierenden Programm.
+	
+	#!/bin/bash
+
+	Berechtigungen:
+	Damit eine Datei als Programm ausgeführt werden kann, muss das Execute-Bit gesetzt sein, d.h. in den Berechtigungen wird ein x angezeigt.
+
+	chmod u+x <dateiname>
+
+	Aufruf:
+	Es ist eine absolute Pfadangabe notwendig :
+	
+	./test.sh
+		Aufruf aus dem aktuellen Ordner
+
+
+Kontext Variablen:
+	Definition:	
+	trinken='Whiskey und Zigarre'
+		Mehr als ein Wort muss in Anführungszeichen
+		Zwishcne Zuweisung und Variable keine Leerzeichen
+
+	Ausgabe:
+		echo $trinken
+		Ddefinierte Variablen erhalten zu Beginn ein $-Zeichen. Das $-Zeichen bedeutet für den Interpreter generell eine Variable.
+
+Variablen - intern
+	$0 : Der Name der aufgerufenen Datei
+	$1 : Der Name des ersten übergebenen Parameters
+	$# : Anzahl der Skript-Kommandos 
+	$? : Enthält den Exit Status des letzten Befehls; wurde der letzte Befehl erfolgreich ausgeführt
+
+Kommandosubstitution:
+	echo `date`
+	echo $(date)
+	Der Shell Befehl date wird ausgeführt und anschließend an das Programm echo übergeben.
+
+Kommandos in Variablen
+	remove='rm test.txt'
+	$remove
+
+String-Konkatenierung
+	string_1='Heia und '
+	string_2=Popeia
+	string="${string_1} ${string_2} wass raschelt im Stroh"
+	echo "$string_1 $string_2 aber im heu"
+	echo $string
+
+If Anweisung
+	read -p "Ihre Eingabe: " var_name
+
+	echo "Die Eingabe lautete: $var_name"
+
+	if [[ $var_name = "q" ]]
+	then
+        	echo "Ist ein prima q"
+	elif [[ $var_name = "m" ]]
+	then
+       		echo "Ist ein prima m"
+	else
+        	echo "Irgendwas"
+	fi
+
+Schleifen:
+	Die Schleife wird ausgeführt solange die Bedingung nicht 1 ist
+
+	while [[ $eingabe -ne 1 ]]
+do
+        read -p "Mache Eingabe: " eingabe
+        echo $eingabe
+done
+
+	Wiederholung bis der geprüfte wert ein false ergibt
+	until [[ false ]]
+	do
+		read -p "Mache Eingabe: " eingabe
+        echo $eingabe
+	done
+	
+	
+Operatoren
+	[[ $var ]] 	true falls im $var etwas steht außer false oder 0
+	[[ !$var ]]	gibt true falls $var ungleich 0, false oder leer
+	Strings
+	[[ wert1 = 'string1223' ]] gibt true wenn wert1 gleich Zeichenkette
+	[[ !wert1 = 'string1223' ]] gibt true wenn wert1 ungleich zeichenkette ist
+	arithmetische werte
+	[[ wert1 -eq wert2 ]] 	gibt true wenn wert1 = wert2
+	[[ wert1 -ne wert2 ]] 	gibt true wenn wert1 != wert2
+	[[ wert1 -gt wert2 ]]	gibt true wenn wert1 > wert2
+	[[ wert1 -lt wert2 ]] 	gitb true wenn wert1 < wert2 
+	systemoperationen
+	[[ -e $dateiname ]] 	gibt true wenn datei vorhanden ist
+	[[ -d $verzeichnis ]] 	gibt true wenn verzeichnis vorhanden ist
+
+
+Aufgabe
+#Erstellen Sie ein Skript das einen Parameter entgegen nimmt und chekt ob es eine Datei gibt die so heißt wie der Parameter.
+#Aufruf: ./test.sh test.txt
+Erweiterung: Die Eingabeaufforderung soll solange angezeigt werden, bis der Benutzer ein q eingibt oder einen vorhandenen Dateiname
+	
+
+
+
+
+
+
+			
